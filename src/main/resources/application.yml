@@ -1,0 +1,45 @@
+##common
+server:
+  port: 80
+  servlet:
+    context-path: /
+spring:
+  profiles:
+    active: @spring.profiles.active@
+    group:
+      dev:
+      - "dev"
+--- #dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+  web:    
+    resources:
+      cache:
+        cachecontrol:
+          no-cache: true
+          max-age: 0
+  thymeleaf:
+    cache: false
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: user
+    password:
+logging:
+  level:
+    web: info
+    '[com.zaxxer.hikari.HikariConfig]': error
+    '[com.zaxxer.hikari]': error
+    jdbc:
+      jdbc: off
+      sqlonly: debug
+      sqltiming: off
+      audit: off
+      resultset: off
+      resultsettable: off
+      connection: off

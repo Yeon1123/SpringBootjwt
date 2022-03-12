@@ -12,11 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import com.fasterxml.jackson.core.PrettyPrinter;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
 
@@ -44,12 +41,7 @@ public class HelloControllerTest {
 
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(hello))
-                .andDo(document("index", responseFields(
-                        fieldWithPath("concat.email").description("this is user email!")
-                        )
-                    )
-                ); 
+                .andExpect(content().string(hello));
                 // target/generated-snippets/index아래에 생성하고, 응답 payload를 받기 위해 사용
     }
 }
