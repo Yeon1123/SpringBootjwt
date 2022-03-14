@@ -22,14 +22,12 @@ spring:
           max-age: 0
   thymeleaf:
     cache: false
-  h2:
-    console:
-      enabled: true
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: user
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/security
+    username: postgres
+    password: 4512
+
 logging:
   level:
     web: info
