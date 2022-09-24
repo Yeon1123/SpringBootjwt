@@ -27,6 +27,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/security
     username: postgres
     password: 4512
+  security:
+    user:
+      name: user
+      password: test
 
 logging:
   level:

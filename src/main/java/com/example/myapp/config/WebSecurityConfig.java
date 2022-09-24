@@ -19,12 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .antMatchers("/").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                // ("/") 페이지 이외의 요청은 무조건 login으로 이동되고 permit all 설정을 준다.
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
+                .defaultSuccessUrl("/")
                     .and()
-                .logout()
-                    .permitAll();
+                .logout();
     }
 }
