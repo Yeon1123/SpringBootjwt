@@ -2,12 +2,11 @@ package com.example.myapp.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.RestDocumentationContextProvider;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -17,9 +16,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
 
-@WebMvcTest
-@ExtendWith(RestDocumentationExtension.class)
+@AutoConfigureMockMvc // -> webAppContextSetup(webApplicationContext)
 @AutoConfigureRestDocs(outputDir = "target/generated-snippets")
+@SpringBootTest
 public class HelloControllerTest {
 
     @Autowired
@@ -41,7 +40,8 @@ public class HelloControllerTest {
 
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(hello));
+                .andExpect(content().string(hello))
+                .andDo(document("helloAPI"));
                 // target/generated-snippets/index아래에 생성하고, 응답 payload를 받기 위해 사용
     }
 }
