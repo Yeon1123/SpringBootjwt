@@ -13,8 +13,8 @@
 Hello Spring boot Api.
 
 // include::{snippets}/index/curl-request.adoc[]
-.request
-include::{snippets}/helloAPI/http-request.adoc[]
+[[resources-post-create]]
+=== Post 생성
 
-.response
-include::{snippets}/helloAPI/http-response.adoc[]
+==== HTTP request
+operation::member-create[snippets='curl-request,http-request,http-response']

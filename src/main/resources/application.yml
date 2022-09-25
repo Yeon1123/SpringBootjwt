@@ -23,8 +23,8 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/security
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 4512
   security:
@@ -45,3 +45,5 @@ logging:
       resultset: off
       resultsettable: off
       connection: off
+mybatis:
+  mapper-locations: mapper/*.xml
