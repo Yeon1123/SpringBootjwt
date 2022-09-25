@@ -17,4 +17,4 @@ Hello Spring boot Api.
 === Post 생성
 
 ==== HTTP request
-operation::member-create[snippets='curl-request,http-request,http-response']
+operation::member-create[snippets='curl-request,http-request,request-fields,http-response']

@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
 import static com.example.myapp.config.ApiDocumentUtils.getDocumentRequest;
-
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs(outputDir = "target/generated-snippets", uriScheme = "http", uriHost = "docs.api.com")
@@ -40,7 +40,12 @@ public class MemberMapperControllerTest {
 
         result.andExpect(status().isOk())
         .andDo(document("member-create",
-                getDocumentRequest()
+            getDocumentRequest(),
+            requestFields(
+                fieldWithPath("member_email").description("사용자 이메일"),
+                fieldWithPath("member_password").description("사용자 비밀번호"),
+                fieldWithPath("member_name").description("사용자 이름")
+            )
         ));
     }
 }
