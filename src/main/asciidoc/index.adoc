@@ -9,12 +9,26 @@
 :sectanchors:
 
 [[api]]
-== book Api
-Hello Spring boot Api.
+== RestAPI Test Docs
+인스페이스 테스트용 API 문서
 
 // include::{snippets}/index/curl-request.adoc[]
 [[resources-post-create]]
-=== Post 생성
+=== Create
+==== 사용자 등록
+operation::member-create[snippets='curl-request,http-request,request-fields,http-response,response-fields']
 
-==== HTTP request
-operation::member-create[snippets='curl-request,http-request,request-fields,http-response']
+=== Read
+==== 사용자 목록 조회
+operation::members-find[snippets='curl-request,http-request,http-response,response-body,response-fields']
+
+==== 사용자 조회
+operation::member-find[snippets='curl-request,http-request,http-response,response-body,response-fields']
+
+=== Update
+==== 사용자 정보 업데이트
+operation::member-update[snippets='curl-request,http-request,path-parameters,http-response,response-body,response-fields']
+
+=== Delete
+==== 사용자 정보 삭제
+operation::member-delete[snippets='curl-request,http-request,path-parameters,http-response,response-fields']

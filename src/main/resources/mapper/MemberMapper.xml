@@ -6,8 +6,33 @@
 <mapper namespace="com.example.myapp.repository.MemberMapperRepository">
 <!-- repository 의 @Mapper 인터페이스와 연결 -->
 
-    <insert id="createMember" parameterType="com.example.myapp.dto.MemberMapperDTO">/*[회원 등록]createMember*/
+    <insert id="createMember" parameterType="MemberDTO">/*[회원 등록]createMember*/
         INSERT INTO member_table(member_email, member_password, member_name)
 		VALUES (#{memberEmail}, #{memberPassword}, #{memberName})
     </insert>
+
+    <select id="findAllMember" resultType="MemberDTO">/*[전체 회원 조회]findAllMember*/
+        Select member_id, member_email, member_password, member_name
+        From member_table
+    </select>
+
+    <select id="findMemberByEmail" parameterType="string" resultType="MemberDTO">/*[이메일로 회원 조회]findMemberByEmail*/
+        Select member_id, member_email, member_password, member_name
+        From member_table
+        WHERE member_email = #{email}
+    </select>
+
+    <update id="modifyMember" parameterType="MemberDTO">/*[이메일로 정보 수정]modifyMember*/
+        UPDATE member_table
+        set member_email = #{memberEmail},
+            member_password = #{memberPassword},
+            member_name = #{memberName}
+        where member_id = #{memberId}
+    </update>
+
+    <delete id="deleteMemberByEmail" parameterType="string">/*[이메일로 정보 삭제]deleteMemberByEmail*/
+        delete 
+        from member_table
+        where member_email = #{email}
+    </delete>
 </mapper>

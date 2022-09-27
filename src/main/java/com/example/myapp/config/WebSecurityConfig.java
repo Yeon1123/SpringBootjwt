@@ -15,7 +15,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.antMatchers("/", "/home", "/member/*").permitAll()
+				.antMatchers("/", "/home").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
@@ -23,7 +23,7 @@ public class WebSecurityConfig {
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll())
-			.csrf().disable();;
+			.csrf().disable();
 
 		return http.build();
 	}
