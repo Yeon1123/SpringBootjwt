@@ -77,7 +77,6 @@ public class MemberMapperControllerTest {
         .build();
 
     @Test
-    @WithMockUser(roles = "USER")
     @DisplayName("사용자_생성")
     public void A_test() throws Exception {
 
@@ -120,7 +119,6 @@ public class MemberMapperControllerTest {
     }
     
     @Test
-    @WithMockUser(roles = "USER")
     @DisplayName("사용자_전체조회")
     public void B_test() throws Exception {
         MemberDTO fstMemberDTO = MemberDTO.builder()

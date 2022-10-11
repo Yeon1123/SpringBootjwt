@@ -27,11 +27,6 @@ spring:
     url: jdbc:log4jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: inspace123
-  security:
-    user:
-      name: user
-      password: test
-
 logging:
   level:
     web: info
